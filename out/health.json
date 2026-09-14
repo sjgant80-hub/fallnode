@@ -1,0 +1,1 @@
+{"ok":true,"node":"triage-1b","manifestHash":"a6224303c927d40d46bae0c0c42a24ba321b71ff81b36c8c25a7020c99c1c60d","signatureValid":true,"format":{"type":"json","required":["category","urgency","order"]},"limb":"qwen2.5:7b","ledgerLength":6,"ownerPub":"302a300506032b6570032100…"}
