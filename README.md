@@ -2,9 +2,16 @@
 
 **LIVE: https://sjgant80-hub.github.io/fallnode/**
 
-The sovereign runtime — layer 3 of the sovereign-node factory. Run your
-[minted](https://github.com/sjgant80-hub/fallforge-mint) SLM on **your own metal**, behind real
-capability grants. Own once, not rent. Data never leaves.
+The sovereign runtime. Run your [minted](https://github.com/sjgant80-hub/fallforgemint) SLM on
+**your own metal**, behind real capability grants. Own once, not rent. Data never leaves.
+
+Compatible with [fallforgemint](https://sjgant80-hub.github.io/fallforgemint/)'s current manifest
+format today — proven, not assumed: the vendored `verifyManifest`/`signable`/`sha256`/`canon` in
+`vendor/mint-kernel.mjs` are byte-identical to fallforgemint's live kernel, and a manifest built by
+fallforgemint's current code, signed with a real owner key, passes this repo's own boot-gate
+unmodified. Part of the estate's converging [fallforge](https://sjgant80-hub.github.io/fallforge/)
+hub — see [fallforge/chain.html](https://sjgant80-hub.github.io/fallforge/chain.html) for the
+provenance walk across this whole chain.
 
 - **The trust chain, enforced at boot** — the server verifies the mint manifest's hash and
   Ed25519 signature before serving. No verified manifest, no serving.
@@ -34,7 +41,7 @@ capability grants. Own once, not rent. Data never leaves.
 ```bash
 node --test kernel.test.mjs
 node tools/witness.mjs mutate kernel.mjs --timeout 20000 --cap 500 --test node --test kernel.test.mjs
-node server.mjs --manifest ../fallforge-mint/out/manifest.json --port 8788 \
+node server.mjs --manifest manifest.json --port 8788 \   # downloaded from fallforgemint
   --limb qwen2.5:7b --format json:category,urgency,order
 node grant.mjs --node triage-1b --holder ada --scope ask,limb --budget 8
 curl -X POST http://127.0.0.1:8788/ask -H 'content-type: application/json' \

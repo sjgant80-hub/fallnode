@@ -1,10 +1,13 @@
-// FallForge Mint — the minting pipeline's pure core. Layer 2 of the sovereign-node factory:
-// a limb model writes a SPEC (system prompt + few-shot exemplars), this kernel assembles it
-// deterministically into a Modelfile, the minted node is gated by fallforge-gate against its
-// own raw base, and the whole mint is sealed into a signable manifest. v1 mints PROMPT-TUNED
-// nodes (Modelfile-level — owned, private, reproducible); weight-level LoRA is v2 and lands
-// in these same stages. A node is MINTED only on a certified BEATS receipt — the pipeline
-// cannot declare success, it can only measure it.
+// FallForge Mint — the minting pipeline's pure core, vendored here so this runtime can verify a
+// mint's manifest without importing another repo. A limb model writes a SPEC (system prompt +
+// few-shot exemplars), this kernel assembles it deterministically into a Modelfile, the minted
+// node is gated against its own raw base (that gate logic now lives inside fallforgemint's own
+// kernel, absorbed — the `fallforge-gate-receipt`/`fallforge-mint-manifest` kind strings below are
+// the manifest FORMAT, not a link to a separate repo, and are unchanged), and the whole mint is
+// sealed into a signable manifest. v1 mints PROMPT-TUNED nodes (Modelfile-level — owned, private,
+// reproducible); weight-level LoRA is v2 and lands in these same stages. A node is MINTED only on
+// a certified BEATS receipt — the pipeline cannot declare success, it can only measure it. This
+// vendored copy is proven byte-identical to fallforgemint's live kernel (checked 2026-09-19).
 // No I/O here. Pure and total: garbage in → { ok:false, why }, never a throw.
 
 export const MAX_SYSTEM = 4000;      // a spec is a distillation, not a dataset dump

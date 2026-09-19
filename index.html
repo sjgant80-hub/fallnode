@@ -53,11 +53,11 @@
 <div class="wrap">
 <header>
   <h1>Fall<span class="g">Node</span> — the sovereign runtime</h1>
-  <p class="sub">Layer 3 of the sovereign-node factory. Your minted SLM, running on <b>your own metal</b> — the runtime refuses to serve any mint whose <a href="https://sjgant80-hub.github.io/fallforge-mint/" style="color:var(--accent)">signed manifest</a> doesn't verify, gates every ask behind a <b>real capability grant</b> (budget-bounded; a refusal charges nothing), escalates to a bigger limb only on a <b>deterministic format failure</b> — labelled and priced, never silent — and writes every ask, refusal and escalation to a hash-chained service ledger. Own once, not rent. Data never leaves.</p>
+  <p class="sub">Your minted SLM, running on <b>your own metal</b> — the runtime refuses to serve any mint whose <a href="https://sjgant80-hub.github.io/fallforgemint/" style="color:var(--accent)">signed manifest</a> doesn't verify (compatible with fallforgemint's current manifest format — same kind, same hash chain, proven byte-for-byte), gates every ask behind a <b>real capability grant</b> (budget-bounded; a refusal charges nothing), escalates to a bigger limb only on a <b>deterministic format failure</b> — labelled and priced, never silent — and writes every ask, refusal and escalation to a hash-chained service ledger. Own once, not rent. Data never leaves.</p>
 </header>
 
 <h2>A real served session — captured from the runtime, ledger re-verified in your browser</h2>
-<p class="dim" style="font-size:.88rem">The runtime below served <code>triage-1b</code> (the node <a href="https://sjgant80-hub.github.io/fallforge-mint/" style="color:var(--accent)">minted by layer 2</a>) with <code>qwen2.5:7b</code> as the limb, to a holder with a signed token worth <b>8 units</b>. Five acts, exactly as they happened:</p>
+<p class="dim" style="font-size:.88rem">The runtime below served <code>triage-1b</code> (a node <a href="https://sjgant80-hub.github.io/fallforgemint/" style="color:var(--accent)">minted with fallforgemint</a>) with <code>qwen2.5:7b</code> as the limb, to a holder with a signed token worth <b>8 units</b>. Five acts, exactly as they happened:</p>
 <div id="story"><div class="panel dim">loading transcript…</div></div>
 
 <h2>The service ledger — every act, hash-chained</h2>
@@ -77,7 +77,7 @@
 <div class="panel">
   <pre>git clone https://github.com/sjgant80-hub/fallnode && cd fallnode
 node --test kernel.test.mjs
-node server.mjs --manifest ../fallforge-mint/out/manifest.json \
+node server.mjs --manifest manifest.json \   # downloaded from fallforgemint (or fallforge-catalogue)
   --port 8788 --limb qwen2.5:7b --format json:category,urgency,order
 node grant.mjs --node triage-1b --holder ada --scope ask,limb --budget 8   # mint a token
 curl -X POST http://127.0.0.1:8788/ask -H 'content-type: application/json' \
@@ -104,7 +104,7 @@ curl -X POST http://127.0.0.1:8788/ask -H 'content-type: application/json' \
 </div>
 
 <footer>
-  <p>MIT · <a href="https://github.com/sjgant80-hub/fallnode">source &amp; mutation gate</a> — the grant lattice, escalation rule and ledger on this page are the gated <code>kernel.mjs</code> verbatim (injected, CI-diffed). The factory so far: <a href="https://sjgant80-hub.github.io/fallforge-gate/">gate</a> proves → <a href="https://sjgant80-hub.github.io/fallforge-mint/">mint</a> forges → <b>node</b> serves.</p>
+  <p>MIT · <a href="https://github.com/sjgant80-hub/fallnode">source &amp; mutation gate</a> — the grant lattice, escalation rule and ledger on this page are the gated <code>kernel.mjs</code> verbatim (injected, CI-diffed). The chain so far: <a href="https://sjgant80-hub.github.io/fallforgemint/">fallforgemint</a> proves and forges → <b>node</b> serves → <a href="https://sjgant80-hub.github.io/fallforge-catalogue/">catalogue</a> shelves → <a href="https://sjgant80-hub.github.io/fallforge/chain.html">the hub</a> walks the whole chain.</p>
 </footer>
 </div>
 

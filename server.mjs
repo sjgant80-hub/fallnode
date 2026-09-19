@@ -4,7 +4,7 @@
 // Every ask is charged against a real grant; a refusal charges 0; a deterministic format
 // failure escalates to the limb (labelled, charged more); everything lands on the ledger.
 //
-//   node server.mjs --manifest ../fallforge-mint/out/manifest.json [--port 8788]
+//   node server.mjs --manifest manifest.json [--port 8788]   (a manifest downloaded from fallforgemint)
 //                   [--limb qwen2.5:7b] [--format json:category,urgency,order]
 //
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
